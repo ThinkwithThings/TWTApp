@@ -1,1 +1,130 @@
-<h1>hi</h1>
+<html>
+<head>
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="js/slick/slick.css"/>
+    <script type="text/javascript" src="js/jquery-1.11.1.js"></script>
+    <script type="text/javascript" src="js/slick/slick.min.js"></script>
+    <script>
+        function hasGetUserMedia() {
+              return !!(navigator.getUserMedia || navigator.webkitGetUserMedia ||
+                    navigator.mozGetUserMedia || navigator.msGetUserMedia);
+        }
+
+        if (hasGetUserMedia()) {
+            // Good to go!
+        } else {
+          alert('getUserMedia() is not supported in your browser');
+        }
+        function flip(id) {
+            document.querySelector("#" + id).classList.toggle("flipper");
+        }
+    </script>
+    <style>
+        * { font-family: arial; margin: 0; padding: 0; }
+        html,body {overflow-x: hidden;}
+        .img, .multi-item {height: 98%; }
+        .menu   {height: 58px; background-color: #333; width: 100%;}
+        .menu div   {width: 33%; border: 1px solid: #555; float: left; text-align: center; color: #eee;
+                     padding: 16px 0 8px 0; font-size: 140%; }
+        .menu a {text-decoration: none; color: #eee; }
+        .flip-container, .front, .back {
+            width: 100%;
+            height: 100%;
+        }
+        .flipper {
+            transform: rotateY(180deg);
+            transition: 0.6s;
+            transform-style: preserve-3d;
+            position: relative;
+        }
+        .front, .back {backface-visibility: hidden;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        .back {}
+        .note {background-color: #ffbd00; padding: 30px; color: #eee; font-size: 160%; height: 100%;}
+        .note h1 {font-size: 200%; line-height: 0.9; margin: 0 0 10px 0;}
+        .note p { color: #333; }
+        .front {
+            z-index: 2;
+            /* for firefox 31 */
+            transform: rotateY(0deg);
+        }
+        .flip-container {
+            perspective: 1000;
+        }
+
+        /* back, initially hidden pane */
+        .back {
+            transform: rotateY(180deg);
+        }
+    </style>
+</head>
+<body>
+<div class="menu">
+    <div><a href="all.html">Show all</a></div>
+    <div class="pic"><a href="cam.html">Take a photo</a></div>
+    <div>Share...</div>
+</div>
+<div class="slick-slider multi-item">
+        <!--
+        <div><img src="Provocations_7.png" class="img"/></div>
+        <div><img src="Provocations_8.png" class="img" /></div>
+        <div><img src="Provocations_10.png" class="img" /></div>
+        <div><img src="Provocations_11.png" class="img" /></div>
+        <div><img src="Provocations_12.png" class="img" /></div>
+        <div><img src="Provocations_13.png" class="img" /></div>
+        <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
+        -->
+        <div id="f1" class="flip-container">
+          <div class="front img" onclick='flip("f1")'><img src="Provocations_7.png" class="img"/></div>
+          <div class="back img" onclick='flip("f1")'>
+          <div class="note">
+          <h1>Composition Patterns</h1>
+          <p>Tell a long story. Lorem ipsum dolor secut solis radii, etc</p>        
+        </div></div></div>
+
+        <div id="f2" class="flip-container">
+          <div class="front img" onclick='flip("f2")'><img src="Provocations_8.png" class="img"/></div>
+          <div class="back img" onclick='flip("f2")'>
+          <div class="note">
+          <h1>Classify Patterns</h1>
+          <p>Make a row of similar things. Lorem ipsum dolor secut solis radii, etc</p>        
+        </div></div></div>
+
+        <div id="f3" class="flip-container">
+          <div class="front img" onclick='flip("f3")'><img src="Provocations_10.png" class="img"/></div>
+          <div class="back img" onclick='flip("f3")'>
+          <div class="note">
+          <h1>Identify Patterns</h1>
+          <p>Which one comes next? Lorem ipsum dolor secut solis radii, etc</p>        
+        </div></div></div>
+        
+        <div id="f4" class="flip-container">
+          <div class="front img" onclick='flip("f4")'><img src="Provocations_11.png" class="img"/></div>
+          <div class="back img" onclick='flip("f4")'>
+          <div class="note">
+          <h1>Identify Textures</h1>
+          <p>Which object is lightest? Heaviest? Lorem ipsum dolor secut solis radii, etc</p>        
+        </div></div></div>
+</div>
+</div>
+
+<script type="text/javascript">
+        $(document).ready(function(){
+            $('.multi-item').slick(
+                { infinite: true,
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    adaptiveHeight: true
+                }
+            );
+                $(".pic").on("click", function() {
+                    window.alert("snap");
+                })
+        });
+</script>
+
+</body>
