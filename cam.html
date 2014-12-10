@@ -3,9 +3,9 @@
 </head>
 <body>
 
-    <video id="video" width="640" height="480" autoplay></video>
+    <video id="video" width="480" height="640" autoplay></video>
     <button id="snap" style="width: 100px; height: 50px;">Snap Photo</button>
-    <canvas id="canvas" width="640" height="480"></canvas>
+    <canvas id="canvas" width="480" height="640"></canvas>
 
     <script>
     // Put event listeners into place
@@ -39,7 +39,7 @@
         }, errBack);
     }
     document.getElementById("snap").addEventListener("click", function() {
-        context.drawImage(video, 0, 0, 480, 480);
+        context.drawImage(video, 0, 0, 480, 640);
     });
 }, false);
 

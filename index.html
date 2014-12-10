@@ -19,6 +19,12 @@
         function flip(id) {
             document.querySelector("#" + id).classList.toggle("flipper");
         }
+        function show(id) {
+            ids = id.split(",");
+            for (var i = 0; i < ids.length; i++) {
+                document.querySelector("#" + ids[i]).classList.toggle("show");
+            }
+        }
     </script>
     <style>
         * { font-family: arial; margin: 0; padding: 0; }
@@ -26,7 +32,7 @@
         .img, .multi-item {height: 98%; }
         .menu   {height: 58px; background-color: #ffbd00; width: 100%;}
         .menu div   {width: 33%; float: left; text-align: center; color: #eee;
-                     padding: 16px 0 8px 0; font-size: 140%; }
+                     padding: 4px 0 0 0; }
         .menu a {text-decoration: none; color: #eee; }
         .flip-container, .front, .back {
             width: 100%;
@@ -64,13 +70,18 @@
             -webkit-transform: rotateY(180deg);
             transform: rotateY(180deg);
         }
+        .share {width: 100%; height: 100%; position: absolute; left: 0; top: 0; text-align: center; visibility: hidden;}
+        .frame {-webkit-border-radius: 12px; width: 80%; border-radius: 12px; border: 6px solid #888; background: #fff;
+                margin: 100px auto 0 auto; padding: 20px; opacity: 1;} 
+        .fade { opacity: 0.8; background-color: #000; width: 100%; height: 100%; position: absolute; top: 0; left: 0; visibility: hidden} 
+        .show { visibility: visible; }
     </style>
 </head>
 <body>
 <div class="menu">
-    <div><a href="all.html">Show all</a></div>
-    <div class="pic"><a href="cam.html">Take a photo</a></div>
-    <div>Share...</div>
+    <div><a href="all.html"><img src="more.png" style="margin-top: 4px;"/></a></div>
+    <div class="pic"><a href="cam.html"><img src="camera.png" /></a></div>
+    <div><img src="share.png" onclick='show("share,fade");'/></div>
 </div>
 <div class="slick-slider multi-item">
         
@@ -92,6 +103,19 @@
         </div>
 
 </div>
+<div id="fade" class="fade"></div>
+<div id="share" class="share">
+    <div class="frame" onclick="show('share,fade');">
+        <h1 style="color: #666;">Share...<div style="float: right;">X</div></h1>
+        <table>
+        <tr><td><a href="http://facebook.com"><img src="facebook.jpg" /></a></td>
+            <td><a href="http://twitter.com"><img src="twitter.jpg" /></a></tr>
+        <tr><td><a href="http://pinterest.com"><img src="pinterest.png" /></a></td>
+            <td><a href="mailto:info@thinkwiththings.co.uk?subject=hello"><img src="email.jpg" /></a></tr>
+        </table>
+    </div>
+
+</div>
 
 <script type="text/javascript">
         $(document).ready(function(){
@@ -102,9 +126,6 @@
                     adaptiveHeight: true
                 }
             );
-                $(".pic").on("click", function() {
-                    window.alert("snap");
-                })
         });
 </script>
 
