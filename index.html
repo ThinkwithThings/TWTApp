@@ -14,7 +14,7 @@
         if (hasGetUserMedia()) {
             // Good to go!
         } else {
-          alert('getUserMedia() is not supported in your browser');
+          //alert('getUserMedia() is not supported in your browser');
         }
         function flip(id) {
             document.querySelector("#" + id).classList.toggle("flipper");
@@ -24,8 +24,8 @@
         * { font-family: arial; margin: 0; padding: 0; }
         html,body {overflow-x: hidden;}
         .img, .multi-item {height: 98%; }
-        .menu   {height: 58px; background-color: #333; width: 100%;}
-        .menu div   {width: 33%; border: 1px solid: #555; float: left; text-align: center; color: #eee;
+        .menu   {height: 58px; background-color: #ffbd00; width: 100%;}
+        .menu div   {width: 33%; float: left; text-align: center; color: #eee;
                      padding: 16px 0 8px 0; font-size: 140%; }
         .menu a {text-decoration: none; color: #eee; }
         .flip-container, .front, .back {
@@ -33,31 +33,35 @@
             height: 100%;
         }
         .flipper {
+            -webkit-transform: rotateY(180deg);
             transform: rotateY(180deg);
             transition: 0.6s;
+            -webkit-transform-style: preserve-3d;
             transform-style: preserve-3d;
             position: relative;
         }
-        .front, .back {backface-visibility: hidden;
+        .front, .back {-webkit-backface-visibility: hidden;
             position: absolute;
             top: 0;
             left: 0;
         }
-        .back {}
-        .note {background-color: #ffbd00; padding: 30px; color: #eee; font-size: 160%; height: 100%;}
+        .note {color: #eee; font-size: 160%; height: 100%;}
         .note h1 {font-size: 200%; line-height: 0.9; margin: 0 0 10px 0;}
         .note p { color: #333; }
         .front {
             z-index: 2;
             /* for firefox 31 */
+            -webkit-transform: rotateY(0deg);
             transform: rotateY(0deg);
         }
         .flip-container {
+            -webkit-perspective: 1000;
             perspective: 1000;
         }
 
         /* back, initially hidden pane */
         .back {
+            -webkit-transform: rotateY(180deg);
             transform: rotateY(180deg);
         }
     </style>
@@ -69,130 +73,24 @@
     <div>Share...</div>
 </div>
 <div class="slick-slider multi-item">
-        <!--
- 	<div><img src="Provocations_4.png" class="img"/></div>
-	<div><img src="Provocations_5.png" class="img"/></div>
-	<div><img src="Provocations_6.png" class="img"/></div>
-        <div><img src="Provocations_7.png" class="img"/></div>
-        <div><img src="Provocations_8.png" class="img" /></div>
-        <div><img src="Provocations_10.png" class="img" /></div>
-        <div><img src="Provocations_11.png" class="img" /></div>
-        <div><img src="Provocations_12.png" class="img" /></div>
-        <div><img src="Provocations_13.png" class="img" /></div>
-        <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
-        -->
+        
         <div id="f1" class="flip-container">
           <div class="front img" onclick='flip("f1")'><img src="Provocations_4.png" class="img"/></div>
-          <div class="back img" onclick='flip("f1")'>
-            <div class="note">
-	            <h1>Composition, Forms, Age 3-6</h1>
-  <p>Math/Language/Literacy/Social-Emotional</p>  
-	            <h1>What to Observe...</h1>
-                <p>Record children’s stories using audio.</p>  
-                <h1>Extend Questions...</h1>
-                <p>Did the circle have a problem? What was the solution? What is the setting of your story or where does the circle live? What other materials could help you tell this story? Who is friends with the circle and why?</p>        
-            </div>
-          </div>
+          <div class="back img" onclick='flip("f1")'><div class="note"><img src="FLIP_4.png" class="img"/></div></div>
         </div>
-
         <div id="f2" class="flip-container">
           <div class="front img" onclick='flip("f2")'><img src="Provocations_5.png" class="img"/></div>
-          <div class="back img" onclick='flip("f2")'>
-          <div class="note">
-	  <h1>Identify Relations, TWT02</h1>
-          <h1>What to Observe...</h1>
-          <p>Lorem ipsum dolor secut solis radii, etc</p>  
-          <h1>Extend Questions...</h1>
-          <p>How do you know there are more?  Can we make something to organize them?</p>         
-        </div></div></div>
-
+          <div class="back img" onclick='flip("f2")'><div class="note"><img src="FLIP_5.png" class="img"/></div></div>
+        </div>
         <div id="f3" class="flip-container">
           <div class="front img" onclick='flip("f3")'><img src="Provocations_6.png" class="img"/></div>
-          <div class="back img" onclick='flip("f3")'>
-          <div class="note">
- 	  <h1>Identify Relations, TWT03</h1>
-          <h1>What to Observe...</h1>
-          <p>Lorem ipsum dolor secut solis radii, etc</p>  
-          <h1>Extend Questions...</h1>
-          <p>Can we line them up from shortest to tallest?  What else is tall?  What else is short?</p>         
-        </div></div></div>
-        
+          <div class="back img" onclick='flip("f3")'><div class="note"><img src="FLIP_6.png" class="img"/></div></div>
+        </div>
         <div id="f4" class="flip-container">
           <div class="front img" onclick='flip("f4")'><img src="Provocations_7.png" class="img"/></div>
-          <div class="back img" onclick='flip("f4")'>
-          <div class="note">
-	  <h1>Clasify Patternss, TWT04</h1>
-          <h1>What to Observe...</h1>
-          <p>Lorem ipsum dolor secut solis radii, etc</p>  
-          <h1>Extend Questions...</h1>
-          <p>What made you decide that these objects are similar?  What is the same about them?  What is different?</p>         
-        </div></div></div>
+          <div class="back img" onclick='flip("f4")'><div class="note"><img src="FLIP_7.png" class="img"/></div></div>
+        </div>
 
-        <div id="f5" class="flip-container">
-          <div class="front img" onclick='flip("f5")'><img src="Provocations_8.png" class="img"/></div>
-          <div class="back img" onclick='flip("f5")'>
-          <div class="note">
-          <h1>Identify Patterns, TWT05 </h1>
-  	  <h1>What to Observe...</h1>
-          <p>Lorem ipsum dolor secut solis radii, etc</p>  
-          <h1>Extend Questions...</h1>
-          <p>Lorem ipsum dolor secut solis radii, etc</p>
- 	  <h1>What to Observe...</h1>
-          <p>Lorem ipsum dolor secut solis radii, etc</p>  
-          <h1>Extend Questions...</h1>
-          <p>Lorem ipsum dolor secut solis radii, etc</p>
-          <p>test1</p>        
-        </div></div></div>
-
-        <div id="f6" class="flip-container">
-          <div class="front img" onclick='flip("f6")'><img src="Provocations_10.png" class="img"/></div>
-          <div class="back img" onclick='flip("f6")'>
-          <div class="note">
-	    <h1>Identify Patterns, TWT06 </h1>
-          <h1>What to Observe...</h1>
-          <p>Lorem ipsum dolor secut solis radii, etc</p>  
-          <h1>Extend Questions...</h1>
-          <p>Can we make a different pattern?  Can you start a pattern for a partner to finish?</p>        
-        </div></div></div>
-
-        <div id="f7" class="flip-container">
-          <div class="front img" onclick='flip("f7")'><img src="Provocations_11.png" class="img"/></div>
-          <div class="back img" onclick='flip("f7")'>
-          <div class="note">
-	    <h1>Identify Textures, TWT07 </h1>
-          <h1>What to Observe...</h1>
-          <p>Lorem ipsum dolor secut solis radii, etc</p>  
-          <h1>Extend Questions...</h1>
-          <p>Can you guess (just by looking) which material is the heaviest? How can we tell if you are right? Will the feather fall slowly? Will it fall faster or slower than the large block? What other ways can we measure these materials (e.g. weight, length) Are the longest materials always the heaviest? How can we write down or show what we know? </p>        
-        </div></div></div>
-
-        <div id="f8" class="flip-container">
-          <div class="front img" onclick='flip("f8")'><img src="Provocations_12.png" class="img"/></div>
-          <div class="back img" onclick='flip("f8")'>
-          <div class="note">
-	  <h1>Composition Colours, TWT08 </h1>
-          <h1>What to Observe...</h1>
-          <p>Lorem ipsum dolor secut solis radii, etc</p>  
-          <h1>Extend Questions...</h1>
-          <p>Lorem ipsum dolor secut solis radii, etc</p>        
-        </div></div></div>
-
-        <div id="f9" class="flip-container">
-          <div class="front img" onclick='flip("f9")'><img src="Provocations_13.png" class="img"/></div>
-          <div class="back img" onclick='flip("f9")'>
-          <div class="note">
-	  <h1>Classify Colours, TWT09 </h1>
-          <h1>What to Observe...</h1>
-          <p>Lorem ipsum dolor secut solis radii, etc</p>  
-          <h1>Extend Questions...</h1>
-          <p>How can we make different groups?</p>        
-        </div></div></div>
-
-
-
-
-</div>
-</div>
 </div>
 
 <script type="text/javascript">
